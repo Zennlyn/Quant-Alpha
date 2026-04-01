@@ -29,3 +29,37 @@ ts_decay_linear(trade_when(volume > ts_mean(volume, 22), a*jp, -1), 120)
 | 2.36 | 2.76% | 3.70 | 30.79% | 4.58% | 223.23‱ |
 
 ![](img/first_pnl.png)
+
+```
+vol_put = implied_volatility_put_60;
+cond = ts_delta(vol_put, 25) > 0;
+signal = ts_decay_linear(zscore(cond), 25);
+
+signed_power(signal, 4)
+```
+| Region | Universe | Decay | Neutralization | NaN Handling | Truncation |
+| ------ | -------- | ----- | -------------- | ------------ | ---------- |
+| USA | TOP3000 | 10 | Sector | On | 0.01
+
+**Out-Sample Performance**
+| Sharpe | Turnover | Fitness | Returns | Drawdown | Margin |
+| ------ | -------- | ------- | ------- | -------- | ------ |
+| 1.99 | 12.50% | 2.17 | 14.84% | 3.38% | 23.74‱ |
+
+![](img/second_pnl.png)
+
+```
+avg_news = vec_avg(nws12_afterhsz_sl);
+rank(ts_sum(avg_news, 60)) > 0.5 ? 1 : rank(-ts_delta(close, 2))
+```
+
+| Region | Universe | Decay | Neutralization | NaN Handling | Truncation |
+| ------ | -------- | ----- | -------------- | ------------ | ---------- |
+| USA | TOP3000 | 7 | Subindustry | On | 0.01
+
+**Out-Sample Performance**
+| Sharpe | Turnover | Fitness | Returns | Drawdown | Margin |
+| ------ | -------- | ------- | ------- | -------- | ------ |
+| 1.90 | 18.92% | 0.98 | 4.99% | 1.28% | 5.27‱ |
+
+![](img/third_pnl.png)
