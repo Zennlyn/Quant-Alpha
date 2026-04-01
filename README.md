@@ -24,3 +24,7 @@ ts_decay_linear(trade_when(volume > ts_mean(volume, 22), a*jp, -1), 120)
 | USA | TOP3000 | 120 | Industry | Off | 0.03
 
 ![](img/first_pnl.png)
+
+| Sharpe | Turnover | Fitness | Returns | Drawdown | Margin |
+| ------ | -------- | ------- | ------- | -------- | ------ |
+| 2.36 | 2.76% | 3.70 | 30.79% | 4.58% | 223.23‱ |
