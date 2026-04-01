@@ -22,4 +22,5 @@ ts_decay_linear(trade_when(volume > ts_mean(volume, 22), a*jp, -1), 120)
 | Region | Universe | Decay | Neutralization |
 | ------ | -------- | ----- | -------------- |
 | USA | TOP3000 | 120 | Industry |
+
 ![](img/first_pnl.png)
